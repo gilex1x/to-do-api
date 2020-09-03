@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "50a9f943-b634-447f-b552-aad61b34b865",
+		"name": "typescript-base",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "listExamples",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/example",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"example"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addExample",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Natalia Gonzalez\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/example",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"example"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addManyExamples",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"lista\": [{\r\n        \"name\": \"example 1\"\r\n    },{\r\n        \"name\": \"example 1\"\r\n    },{\r\n        \"name\": \"example 1\"\r\n    },{\r\n        \"name\": \"example 1\"\r\n    }]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/example/bulk",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"example",
+						"bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editExample",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Natalia Gonzalez\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/example/5f2c190af939e7198473f35e",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"example",
+						"5f2c190af939e7198473f35e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "detailExample",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Natalia Gonzalez\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/example/3odxU9BRsxuMOMFLHy1mtj",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"example",
+						"3odxU9BRsxuMOMFLHy1mtj"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteExample",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Natalia Gonzalez\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/example/5f2c3a91c5df8149481f6b91",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"example",
+						"5f2c3a91c5df8149481f6b91"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,241 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "Este proyecto le permitira ver la documentación necesaria para apuntar al api ToDo list.",
+		"version": "1.0.0",
+		"title": "To Do List",
+		"contact": {
+			"email": "gonzalezjunconatalia@gmail.com"
+		},
+		"license": {
+			"name": "MIT",
+			"url": "https://opensource.org/licenses/MIT"
+		}
+	},
+	"host": "localhost:5000",
+	"basePath": "/v1",
+	"tags": [
+		{
+			"name": "todo",
+			"description": "Api para la lista de tareas"
+		}
+	],
+	"schemes": [
+		"http"
+	],
+	"paths": {
+		"/todo": {
+			"post": {
+				"tags": [
+					"todo"
+				],
+				"summary": "Agregar una nueva tarea",
+				"description": "",
+				"operationId": "addTodo",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "Objeto todo necesario para agregar una tarea",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Todo"
+						}
+					}
+				],
+				"responses": {
+					"404": {
+						"description": "Resource not found"
+					},
+					"500": {
+						"description": "Service not available"
+					}
+				}
+			}
+		},
+		"/todo/{id}": {
+			"put": {
+				"tags": [
+					"todo"
+				],
+				"summary": "Actualizar una tarea",
+				"description": "",
+				"operationId": "updateTodo",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "id del usuario a actualizar",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"description": "Objeto todo necesario para actualizar una tarea",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Todo"
+						}
+					}
+				],
+				"responses": {
+					"400": {
+						"description": "Todo not found"
+					},
+					"404": {
+						"description": "Resource not found"
+					},
+					"500": {
+						"description": "Service not available"
+					}
+				}
+			},
+			"get": {
+				"tags": [
+					"todo"
+				],
+				"summary": "Obtener una tarea",
+				"description": "",
+				"operationId": "getTodo",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "id del usuario a obtener",
+						"required": true,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"400": {
+						"description": "Todo not found"
+					},
+					"404": {
+						"description": "Resource not found"
+					},
+					"500": {
+						"description": "Service not available"
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"todo"
+				],
+				"summary": "Eliminar usuario de una tarea",
+				"description": "This can only be done by the logged in user.",
+				"operationId": "deleteUser",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "The name that needs to be deleted",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "body",
+						"description": "Objeto todo necesario para eliminar usuarios de una tarea",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/User"
+						}
+					}
+				],
+				"responses": {
+					"400": {
+						"description": "Todo not found"
+					},
+					"404": {
+						"description": "Resource not found"
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"Todo": {
+			"type": "object",
+			"required": [
+				"name",
+				"photoUrls"
+			],
+			"properties": {
+				"name": {
+					"type": "string",
+					"example": "Tarea uno"
+				},
+				"status": {
+					"type": "string",
+					"description": "estado de la tarea",
+					"enum": [
+						"ABIERTA",
+						"EN-PROGRESO",
+						"COMPLETADA",
+						"ARCHIVADA"
+					]
+				},
+				"users": {
+					"type": "array",
+					"xml": {
+						"name": "tag",
+						"wrapped": true
+					},
+					"items": {
+						"$ref": "#/definitions/User"
+					}
+				}
+			},
+			"xml": {
+				"name": "Todo"
+			}
+		},
+		"User": {
+			"type": "object",
+			"required": [
+				"name"
+			],
+			"properties": {
+				"_id": {
+					"type": "string",
+					"example": "5f4e48646858cf666cf5475e",
+					"description": "Este campo se crea automaticamente no es necesario enviarlo"
+				},
+				"name": {
+					"type": "string",
+					"example": "Alejandro"
+				}
+			},
+			"xml": {
+				"name": "User"
+			}
+		}
+	},
+	"externalDocs": {
+		"description": "Find out more about Swagger",
+		"url": "http://swagger.io"
+	}
+}
