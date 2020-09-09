@@ -82,7 +82,7 @@ export async function editTodo (req: Request, res: Response, next: NextFunction)
 
       await todoService.updateTodo(params.id, body)
     } else {
-      res.status(400).json({
+      return res.status(400).json({
         message: 'Todo not found'
       })
     }
